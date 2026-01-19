@@ -1,0 +1,57 @@
+-- Elektronika MK90 Memory Map (64KB) --
+
+Zone 1: RAM (16KB)
+[000000 - 037777]
+Static RAM 8x2KB (KA537RU10B)
+
+
+Zone 2: Secondary ROM (16KB)
+[040000 - 077777]
+1. Secondary mask ROM in MK90 2.0 (contains tests)
+   (KA1835RE1-0009, only first 16KB used)
+2. Memory window for MK92 2.0 ROM (BASIC extension or tests)
+   (KA1835RE1-0010 as 2x16KB banks)
+3. Address "mirror" if previous options disabled or not present
+   Address "mirror" returns address as "readed" value,
+   e.g. reading at address 41022 returns value 41022.
+
+     
+Zone 3: Primary ROM, part 1 (24KB)
+[100000 - 157777]
+Mask ROM with BASIC (KA1835RE1 -0001 or -0008)
+
+
+Zone 4: System ROM (2KB)
+[160000 - 163777]
+1. Primary ROM if enabled in KA1835VG5 (used only in MK90 2.0)
+2. Address "mirror" if previous option disabled
+
+
+Zone 5: Peripherals (1KB)
+[164000 - 165777]
+1. [164000 - 164007] - KA1835VG3 registers (write only)
+2. [164010 - 164013] - МК92 2.0 TV controller registers (KA1835VG8, not released) 
+3. [164020 - 164027] - KA1835VG4 registers
+4. [164030 - 164031] - Address "mirror"
+5. [164032 - 164035] - KA1835VG5 registers
+6. [164036 - 164037] - MK92 2.0 Command register (KA1835VG6)
+7. [164064 - 164065] - MK92 1.0 Status register (KA1835D51)
+8. [164200 - 164201] - MK92 2.0 Status register (KA1835VG6)
+9. [165000 - 165177] - KA512VI1 registers/SRAM
+A. [165200 - 165377] - KA512VI1 duplication
+B. Causes BUS ERROR (TRAP 4) if trying to:
+   - Read KA1835VG3 registers
+   - Read MK92 registers when it's not connected
+     (but MK92 2.0 Command register is "mirror" then)
+   - Read any other unused address
+
+
+Zone 6: Primary ROM, part 2 (4.5KB)
+[166000 - 176777]
+Same chip as Zone 2
+
+
+Zone 7: Unused (0.5KB)
+[177000 - 177777]
+1. [177514 - 177515] - MK92 1.0 Command register (KA1835D51)
+2. Causes BUS ERROR (TRAP 4) otherwise

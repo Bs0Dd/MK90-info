@@ -1,0 +1,20 @@
+-- Factory values ​​of KA512VI1 (MC146818) registers --
+
+ad = val
+
+00 = 127 ; seconds       register
+01 = 000 ; seconds alarm --------
+02 = 255 ; minutes       --------
+03 = 000 ; minutes alarm --------
+04 = 255 ; hours         --------
+05 = 000 ; hours alarm   --------
+06 = 255 ; day of week   --------
+07 = 001 ; date of month --------
+08 = 255 ; month         --------
+09 = 001 ; year          --------
+10 = 127 ; special A     --------
+11 = 135 ; special B     --------
+12 = 000 ; special C     --------
+13 = 000 ; special D     --------
+
+xx = 170 ; SRAM cell 14-63
