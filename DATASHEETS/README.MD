@@ -1,4 +1,4 @@
- English | [Русский](https://github.com/Bs0Dd/MK90-info/blob/master/DATASHEETS/README_ru.md)
+ English | [Русский](https://github.com/Bs0Dd/MK90-info/blob/master/DATASHEETS/README_ru.MD)
 
 # Datasheets for the microcircuits used in the MK90 and MK92
 

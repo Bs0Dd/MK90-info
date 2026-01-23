@@ -1,4 +1,4 @@
-[English](https://github.com/Bs0Dd/MK90-info/blob/master/DATASHEETS/README.md) | Русский
+[English](https://github.com/Bs0Dd/MK90-info/blob/master/DATASHEETS/README.MD) | Русский
 
 # Даташиты на микросхемы, применяемые в МК90 и МК92
 
