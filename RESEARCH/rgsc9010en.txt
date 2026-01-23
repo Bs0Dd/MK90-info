@@ -3,7 +3,7 @@ Configuration: MK90 1.0 without MK92
 
 < adr> = < val>
 
-Periphery zone (5):
+Periphery zone 1 (Address Space 5):
 164020 = 164000 ; KA1835VG4 data      register
 164022 = 164373 ; --------- frequency --------
 164024 = 164170 ; --------- status    --------
@@ -141,6 +141,6 @@ Periphery zone (5):
 165374 = 165524
 165376 = 165524
 
-Zone unused (7):
+Periphery zone 2 (Address Space 7):
 
 Test completed!
