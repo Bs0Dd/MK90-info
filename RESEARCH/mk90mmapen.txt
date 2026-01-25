@@ -34,15 +34,15 @@ Zone 5: Peripherals (1KB)
 3. [164020 - 164027] - KA1835VG4 registers
 4. [164030 - 164031] - Address "mirror"
 5. [164032 - 164035] - KA1835VG5 registers
-6. [164036 - 164037] - MK92 2.0 Command register (KA1835VG6)
-7. [164064 - 164065] - MK92 1.0 Status register (KA1835D51)
-8. [164200 - 164201] - MK92 2.0 Status register (KA1835VG6)
+6. [164036 - 164037] - Unknown register in MK92 2.0 (tested by firmware)
+7. [164060 - 164067] - KA1835VG4 registers in MK92 1.0 (connection with KA1835D51)
+8. [164200 - 164203] - KA1835VG6 registers in MK92 2.0 (plotter / tape)
 9. [165000 - 165177] - KA512VI1 registers/SRAM
 A. [165200 - 165377] - KA512VI1 duplication
 B. Causes BUS ERROR (TRAP 4) if trying to:
    - Read KA1835VG3 registers
    - Read MK92 registers when it's not connected
-     (but MK92 2.0 Command register is "mirror" then)
+     (but MK92 2.0 unknown register is "mirror" then)
    - Read any other unused address
 
 
@@ -51,7 +51,9 @@ Zone 6: Primary ROM, part 2 (4.5KB)
 Same chip as Zone 2
 
 
-Zone 7: Unused (0.5KB)
+Zone 7: Peripherals 2 (0.5KB)
 [177000 - 177777]
-1. [177514 - 177515] - MK92 1.0 Command register (KA1835D51)
-2. Causes BUS ERROR (TRAP 4) otherwise
+1. [177510 - 177517] - Unknown registers in MK92 1.0 (duplication of KA1835VG4?)
+2. [177546 - 177547] - UART (current loop) timer register in MK92 2.0 (KA588VA4)
+3. [177560 - 177567] - UART (current loop) registers in MK92 2.0 (KA588VA4)
+4. Causes BUS ERROR (TRAP 4) otherwise
