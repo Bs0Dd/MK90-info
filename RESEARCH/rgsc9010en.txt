@@ -8,10 +8,10 @@ Periphery zone 1 (Address Space 5):
 164022 = 164373 ; --------- frequency --------
 164024 = 164170 ; --------- status    --------
 164026 = 164000 ; --------- command   --------
-164030 = 164030 ; Mirror
+164030 = 164030 ; Address mirror from KA1835VG4
 164032 = 005032 ; KA1835VG5 RG1 register 
 164034 = 000034 ; --------- RG2 --------
-164036 = 164036 ; Mirror
+164036 = 164036 ; Address mirror from KA1835VG4
 165000 = 165376 ; KA512VI1 seconds       register
 165002 = 165000 ; -------- seconds alarm --------
 165004 = 165776 ; -------- minutes       --------

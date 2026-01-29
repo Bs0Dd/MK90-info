@@ -1,19 +1,25 @@
 -- Peripheral register test (perreg.bin) --
-Configuration: MK90 2.0 with MK92 2.0
+Configuration: MK90 1.0 with MK92 1.0
 
 < adr> = < val>
 
 Periphery zone 1 (Address Space 5):
-164020 = 164153 ; KA1835VG4 data      register
-164022 = 164377 ; --------- frequency --------
-164024 = 164050 ; --------- status    --------
-164026 = 164153 ; --------- command   --------
+164020 = 164000 ; KA1835VG4 data      register
+164022 = 164373 ; --------- frequency --------
+164024 = 164170 ; --------- status    --------
+164026 = 164000 ; --------- command   --------
 164030 = 164030 ; Address mirror from KA1835VG4
-164032 = 010032 ; KA1835VG5 RG1 register 
-164034 = 001034 ; --------- RG2 --------
-164036 = 024234 ; MK92 2.0 register unknown
-164200 = 140600 ; KA1835VG6 status  register
-164202 = 100000 ; --------- command --------
+164032 = 005032 ; KA1835VG5 RG1 register 
+164034 = 000034 ; --------- RG2 --------
+164036 = 164036 ; Address mirror from KA1835VG4
+164060 = 164077 ; KA1835VG4 (MK92 1.0) data      register
+164062 = 164377 ; -------------------- frequency --------
+164064 = 164134 ; -------------------- status    --------
+164066 = 164077 ; -------------------- command   --------
+164070 = 164070 ; Address mirror from KA1835VG4
+164072 = 164072 ; -----------------------------
+164074 = 164074 ; -----------------------------
+164076 = 164076 ; -----------------------------
 165000 = 165376 ; KA512VI1 seconds       register
 165002 = 165000 ; -------- seconds alarm --------
 165004 = 165776 ; -------- minutes       --------
@@ -144,10 +150,5 @@ Periphery zone 1 (Address Space 5):
 165376 = 165524
 
 Periphery zone 2 (Address Space 7):
-177546 = 000200 ; KA588VA4 timer                           register
-177560 = 070000 ; -------- receiver control / status       --------
-177562 = 000000 ; -------- receiver data buffer            --------
-177564 = 000200 ; -------- transmitter control / status    --------
-177566 = 177566 ; -------- transmitter data buffer (write) --------
 
 Test completed!
