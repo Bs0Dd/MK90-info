@@ -15,13 +15,14 @@ Zone 2: Secondary ROM (16KB)
 
 *  An address "mirror" returns the address as the "read" value.
    For example, reading address 41022 will return the value 41022.
-   This "mirror" occurs if some device has transmitted a "reply" signal
-   (OTV / BRPLY) to the processor, but no device has transmitted the value itself.
-   In this case, the AD / BDAL bus lines retain a charge from setting the address,
-   which the CMOS processor interprets as a value. A similar phenomenon is observed
-   for devices that do not change the state of some lines, such as the KA1835VG5
-   (bits 0-7). In this case, the state of the unaffected lines will correspond
-   to that when the address was set.
+   This "mirror" occurs if some device (for example address decoder) has 
+   transmitted a "reply" signal (OTV / BRPLY) to the processor, but no device
+   has transmitted the value itself. In this case, the AD / BDAL bus lines
+   retain a charge from setting the address, which the CMOS processor interprets
+   as a value. A similar phenomenon is observed for devices that do not change
+   the state of some lines, such as the KA1835VG5 (bits 0-7). In this case,
+   the state of the unaffected lines will correspond to that when the address
+   was set.
 
      
 Zone 3: Primary ROM, part 1 (24KB)
@@ -40,20 +41,29 @@ Zone 5: Peripherals (1KB)
 1. [164000 - 164007] - KA1835VG3 registers (write only);
 2. [164010 - 164013] - МК92 2.0 TV controller registers (KA1835VG8, not released);
 3. [164020 - 164027] - KA1835VG4 registers;
-4. [164030 - 164031] - Address "mirror" (from KA1835VG4);
-5. [164032 - 164035] - KA1835VG5 registers;
-6. [164036 - 164037] - Unknown register in MK92 2.0 (tested by firmware);
-7. [164060 - 164067] - KA1835VG4 registers in MK92 1.0 (connection with KA1835D51);
-8. [164070 - 164077] - Address "mirror" (from KA1835VG4 in MK92 1.0);
-9. [164200 - 164203] - KA1835VG6 registers in MK92 2.0 (plotter / tape);
-A. [165000 - 165177] - KA512VI1 registers/SRAM;
-B. [165200 - 165377] - KA512VI1 duplication;
-C. Causes BUS ERROR (TRAP 4) if trying to:
+4. [164030 - 164037] - KA1835VG4 address decoder (CS101, CS110, CS111)~:
+   A. [164030 - 164031] - Empty reply (no selection signal), "mirror";
+   B. [164032 - 164035] - KA1835VG5 registers (CS101 for RG1 and CS110 for RG2);
+   C. [164036 - 164037] - MK92 2.0 presence register, or address "mirror"
+                          (CS111 is brought out to the expansion connector);
+5. [164060 - 164067] - KA1835VG4 registers in MK92 1.0 (connection with KA1835D51);
+6. [164070 - 164077] - KA1835VG4 address decoder in MK92 1.0, "mirror"~;
+7. [164200 - 164203] - KA1835VG6 registers in MK92 2.0 (plotter / tape);
+8. [165000 - 165377] - KA1835VG4 address decoder (CSEA)~:
+   A. [165000 - 165177] - KA512VI1 registers / SRAM (64 addresses in total);
+   B. [165200 - 165377] - KA512VI1 duplication (the first 64 addr. are repeated);
+9. Causes BUS ERROR (TRAP 4) if trying to:
    - Read KA1835VG3 registers;
-   - Read MK92 registers when it's not connected
-     (but MK92 2.0 unknown register is "mirror" from KA1835VG4 then);
+   - Read MK92 registers when it's not connected;
    - Read any other unused address.
 
+~  The KA1835VG4, in addition to the serial input/output registers (the first 4), 
+   also contains an address decoder for external devices with 4 (remaining)
+   addresses and a range of 165000-165377 (0xEA**). When accessing these addresses,
+   the controller generates a "reply" signal (OTV / BRPLY) and sends the corresponding
+   CS101, CS110, CS111, or CSEA selection signal to the external device.
+   The KA1835VG4, integrated into the MK92 1.0, does not have any devices on its decoder.
+   
 
 Zone 6: Primary ROM, part 2 (4.5KB)
 [166000 - 176777]
